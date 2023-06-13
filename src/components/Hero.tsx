@@ -12,16 +12,16 @@ import {
 const Hero = () => {
   const [edit, setEdit] = useState(false);
 
-  const [title, setTitle] = useState<string | undefined>();
+  const [title, setTitle] = useState<string | undefined>("PT NEXT");
   const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(e.target.value);
 
-  const [desc, setDesc] = useState<string | undefined>();
+  const [desc, setDesc] = useState<string | undefined>("PT NEXT");
   const onDescChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setDesc(e.target.value);
 
   const toLocalStorage = () => {
-    localStorage.setItem("title", title || "");
+    localStorage.setItem("title", title || " ");
     localStorage.setItem("desc", desc || "");
   };
 
