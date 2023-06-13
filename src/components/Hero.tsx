@@ -21,16 +21,16 @@ const Hero = () => {
     setDesc(e.target.value);
 
   const toLocalStorage = () => {
-    localStorage.setItem("title", title || " ");
-    localStorage.setItem("desc", desc || "");
+    localStorage.setItem("title", title || "TES");
+    localStorage.setItem("desc", desc || "TES");
   };
 
   useEffect(() => {
     if (localStorage.getItem("title")) {
-      setTitle(localStorage.getItem("title") || "");
+      setTitle(localStorage.getItem("title") || "TES");
     }
     if (localStorage.getItem("desc")) {
-      setDesc(localStorage.getItem("desc") || "");
+      setDesc(localStorage.getItem("desc") || "TES");
     }
   }, []);
 
@@ -178,7 +178,7 @@ const Hero = () => {
                   alt="Picture of the author"
                   width={400}
                   height={400}
-                  className=""
+                  className="TES"
                   style={{ transform: "scale(0.8)" }}
                 />
               )}
