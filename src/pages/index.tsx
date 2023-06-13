@@ -84,7 +84,7 @@ const index: NextPage<indexProps> = () => {
       canonical={`${AppConfig.url}/` + "index"}
     >
       <Hero />
-      <Parallax pages={2} scrolling={true}>
+      <Parallax pages={2}>
         <ParallaxLayer offset={0} speed={0.5}>
           <AboutUs />
         </ParallaxLayer>

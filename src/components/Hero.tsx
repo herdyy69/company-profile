@@ -12,22 +12,25 @@ import {
 const Hero = () => {
   const [edit, setEdit] = useState(false);
 
-  const [title, setTitle] = useState("Selamat Datang di PT Lorem Ipsum");
-  const onTitleChange = (e) => setTitle(e.target.value);
+  const [title, setTitle] = useState<string | undefined>();
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setTitle(e.target.value);
 
-  const [desc, setDesc] = useState();
-  const onDescChange = (e) => setDesc(e.target.value);
+  const [desc, setDesc] = useState<string | undefined>();
+  const onDescChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setDesc(e.target.value);
 
   const toLocalStorage = () => {
-    localStorage.setItem("title", title);
-    localStorage.setItem("desc", desc);
+    localStorage.setItem("title", title || "");
+    localStorage.setItem("desc", desc || "");
   };
+
   useEffect(() => {
     if (localStorage.getItem("title")) {
-      setTitle(localStorage.getItem("title"));
+      setTitle(localStorage.getItem("title") || "");
     }
     if (localStorage.getItem("desc")) {
-      setDesc(localStorage.getItem("desc"));
+      setDesc(localStorage.getItem("desc") || "");
     }
   }, []);
 
@@ -56,7 +59,11 @@ const Hero = () => {
 
   const handleAnimationComplete = () => {
     setIsAnimationFinished(true);
-    const { offsetWidth, offsetHeight } = imageRef.current;
+    const imageElement = imageRef.current;
+    if (imageElement !== null) {
+      const { offsetWidth, offsetHeight } = imageElement;
+      // Rest of your code using offsetWidth and offsetHeight
+    }
   };
 
   const animationPreloader = () => {
@@ -77,7 +84,13 @@ const Hero = () => {
           onAnimationStart={handleAnimationStart}
           onAnimationComplete={handleAnimationComplete}
         >
-          <Image ref={imageRef} src="/next.svg" width={400} height={400} />
+          <Image
+            alt="Picture of the author"
+            ref={imageRef}
+            src="/next.svg"
+            width={400}
+            height={400}
+          />
         </motion.div>
       </AnimatePresence>
     );

@@ -36,7 +36,6 @@ const AboutUs = () => {
         //   filter: "blur(5px)",
       }}
       pages={2}
-      scrolling={true}
     >
       <ParallaxLayer
         offset={0}
@@ -117,7 +116,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <Parallax pages={gallery.length} scrolling={true}>
+          <Parallax pages={gallery.length}>
             {gallery.map((item, index) =>
               index === 5 ? (
                 <ParallaxLayer

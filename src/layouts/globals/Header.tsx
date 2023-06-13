@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 
 const Header = () => {
   const [edit, setEdit] = useState(false);
-  const [titleHeader, setTitleHeader] = useState();
-  const onTitleHeaderChange = (e) => setTitleHeader(e.target.value);
+  const [titleHeader, setTitleHeader] = useState<string | undefined>();
+  const onTitleHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setTitleHeader(e.target.value);
 
   const toLocalStorage = () => {
-    localStorage.setItem("titleHeader", titleHeader);
+    localStorage.setItem("titleHeader", titleHeader || "");
   };
   useEffect(() => {
     if (localStorage.getItem("titleHeader")) {
-      setTitleHeader(localStorage.getItem("titleHeader"));
+      setTitleHeader(localStorage.getItem("titleHeader") || "");
     }
   }, []);
 
