@@ -9,6 +9,7 @@ const nextConfig = {
     }
     return config;
   },
+  ignorePatterns: ["out/", ".next/"],
 };
 
 module.exports = nextConfig;
